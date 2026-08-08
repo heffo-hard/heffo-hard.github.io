@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'LXGW WenKai GB Screen';
+    src: url('/font/LXGWWenKaiGBScreen-Regular.woff2') format('woff2'),
+        url('/font/LXGWWenKaiGBScreen-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+/* 全局正文、标题统一应用字体 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a {
+    font-family: 'LXGW WenKai GB Screen', system-ui, sans-serif !important;
+}
+
+/* 代码块单独适配 */
+pre,
+code {
+    font-family: 'LXGW WenKai GB Screen', monospace !important;
+}
