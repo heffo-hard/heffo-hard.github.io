@@ -959,7 +959,7 @@ body.mobile-menu-open {
 }
 :root {
   --color-mode: "light";
-  --body-bg-color: #eee;
+  --body-bg-color: transparent;
   --board-bg-color: #fff;
   --text-color: #3c4858;
   --sec-text-color: #718096;
@@ -986,7 +986,7 @@ body.mobile-menu-open {
     --color-mode: "dark";
   }
   :root:not([data-user-color-scheme]) {
-    --body-bg-color: #181c27;
+    --body-bg-color: transparent;
     --board-bg-color: #252d38;
     --text-color: #c4c6c9;
     --sec-text-color: #a7a9ad;
@@ -1024,7 +1024,7 @@ body.mobile-menu-open {
 }
 @media not print {
   [data-user-color-scheme="dark"] {
-    --body-bg-color: #181c27;
+    --body-bg-color: transparent;
     --board-bg-color: #252d38;
     --text-color: #c4c6c9;
     --sec-text-color: #a7a9ad;
