@@ -19,20 +19,22 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="text">
-<meta property="og:url" content="http://example.com/2026/08/08/text/index.html">
+    <meta name="description" content="在区间 dp 中，经常会出现这样的转移方程： $$dp_(i,j) &#x3D; \begin{cases}  \min_{i\le k&lt;j}({dp_{i,k},dp_{k+1,j}+w(i,j)}) &amp; i&lt;j\  0 &amp; i&#x3D;j \  \infty &amp; i&gt;j\\end{cases}$$ 定义此时如果 $i\le i’ \le j \le">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四边形不等式学习笔记">
+<meta property="og:url" content="http://example.com/2026/08/08/%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在区间 dp 中，经常会出现这样的转移方程： $$dp_(i,j) &#x3D; \begin{cases}  \min_{i\le k&lt;j}({dp_{i,k},dp_{k+1,j}+w(i,j)}) &amp; i&lt;j\  0 &amp; i&#x3D;j \  \infty &amp; i&gt;j\\end{cases}$$ 定义此时如果 $i\le i’ \le j \le">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-08T12:58:24.000Z">
-<meta property="article:modified_time" content="2026-08-08T12:58:40.097Z">
+<meta property="article:modified_time" content="2026-08-09T04:35:23.970Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="测试">
+<meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>text - Hexo</title>
+  <title>四边形不等式学习笔记 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -307,7 +309,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="text"></span>
+            <span id="subtitle" data-typed-text="四边形不等式学习笔记"></span>
           
         </div>
 
@@ -330,7 +332,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          5.2k 字
         
       </span>
     
@@ -341,7 +343,7 @@
         
         
         
-          1 分钟
+          44 分钟
         
       </span>
     
@@ -380,12 +382,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">text</h1>
+            <h1 id="seo-header">四边形不等式学习笔记</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>在区间 dp 中，经常会出现这样的转移方程：</p>
+<p>$$<br>dp_(i,j) &#x3D; \begin{cases}<br>  \min_{i\le k&lt;j}({dp_{i,k},dp_{k+1,j}+w(i,j)}) &amp; i&lt;j\<br>  0 &amp; i&#x3D;j \<br>  \infty &amp; i&gt;j\<br>\end{cases}<br>$$</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>此时如果 $i\le i’ \le j \le j’$ 并且有：<br>$$w(i,j)+w(i’,j’)\le w(i,j’)+w(i’,j)$$<br>那么称函数 $w$ 满足四边形不等式。<br>可以得到两个定理：</p>
+<h2 id="定理-1"><a href="#定理-1" class="headerlink" title="定理 1"></a>定理 1</h2><p>此时 dp 满足四边形不等式。即 $dp(i,j)+dp(i’,j’)\le dp(i,j’)+dp(i’,j)$。</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><ul>
+<li>$i&#x3D;i’$ 或 $j&#x3D;j’$，$w(i,j)+w(i’,j’)&#x3D;w(i,j’)+w(i’,j)$，显然成立。</li>
+<li>$i&lt;i’&#x3D;j&lt;j’$<br>此时原不等式变为 $dp_{i,j}+dp_{j,j’}\le dp{j,j}+dp_{i,j’}&#x3D;dp{i,j’}$。<br>设 $k&#x3D;\max(t|dp_{i,j’}&#x3D;dp_{i,t-1}+dp_{t,j’}+w(i,j’))$。（$k$ 其实就是 $dp_{i,j’}$ 的最优决策点）<br>不妨设 $k \le j$（可由对称性得）。<br>$\because dp_{i,j’}&#x3D;dp_{i,t-1}+dp_{t,j’}+w(i,j’)$<br>$\begin{aligned}<br>dp_{i,j}+dp_{j,j’} &amp; \le w(i,j)+dp_{i,k-1}+dp_{k,j}+dp_{j,j’}\<br>&amp; \le w(i,j’)+dp_{i,k-1}+dp_{k,j}+dp_{j,j’}\<br>&amp; \le w(i,j’)+dp_{i,k-1}+dp_{k,j’}\<br>&amp; &#x3D; dp_{i,j’}\<br>\end{aligned}$</li>
+<li>$i&lt;i’&lt;j&lt;j’$<br>设<br>$\begin{cases}<br>y&#x3D;\max(t|dp_{i’,j}&#x3D;\max(w_{i’,j}+dp_{i’,t-1}+dp_{t,j}))\<br>z&#x3D;\max(t|dp_{i,j’}&#x3D;\max(w_{i,j’}+dp_{i,t-1}+dp_{t,j’}))\<br>\end{cases}$<br>（$y$ 为 $dp_{i’,j}$ 的最优决策点，$z$ 为 $dp_{i,j’}$ 的最优决策点）<br>同理，不妨设 $z\le y$，由定义知 $i&lt;z\le y\le j$。因此有：<br>$\begin{aligned}<br>dp_{i,j}+dp_{i’,j’}&amp;\le w(i,j)+dp_{i,z-1}+dp_{z,j}+w(i’,j’)+dp_{i’,y-1}+dp_{y,j’}\<br>&amp;\le w(i,j’)+w(i’,j)+dp_{i’,y-1}+dp_{i,z-1}+dp_{z,j}+dp_{y,j’}\<br>&amp;\le w(i,j’)+w(i’,j)+dp_{i’,y-1}+dp_{i,z-1}+dp_{y,j}+dp_{z,j’}\<br>&amp;&#x3D;dp_{i,j’}+dp_{i’,j}\<br>\end{aligned}$<br>证毕。</li>
+</ul>
+<h2 id="定理-2"><a href="#定理-2" class="headerlink" title="定理 2"></a>定理 2</h2><p>定义 $s_{i,j}$ 为 $dp_{i,j}$ 的最优决策点，那么有 $s_{i,j}$ 单调，即：<br>$$s_{i,j}\le s_{i,j+1}\le s_{i+1,j+1}$$</p>
+<h3 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h3><p>由对称性，仅证 $s_{i,j}\le s_{i,j+1}$。</p>
+<ul>
+<li>$i&gt;j$，$s_{i,j}&#x3D;s_{i,j+1}&#x3D;\infty$，显然成立。</li>
+<li>$i&#x3D;j$，$s_{i,j}&#x3D;0\le s_{i,j+1}$，同样成立。</li>
+<li>$i&lt;j$<br>令 $dp_{k,i,j}$ 为 $dp_{i,k-1}+dp_{k,j}+w(i,j)$。<br>$\therefore$ 对于任意的 $k\le k’\le j$，有：<br>$$dp_{k,j}+dp_{k’,j+1}\le dp_{k’,j}+dp_{k,j+1}$$。<br>两边同时加上 $w(i,j)+dp_{i,k-1}+w(i,j+1)+dp_{i,k’-1}$，得：<br>$\begin{aligned}<br>&amp; dp_{k,i,j}+dp_{k’,i,j+1}\le dp_{k,i,j+1}+dp_{k’,i,j} \iff \<br>&amp; dp_{k,i,j}-dp_{k’,i,j} \le dp_{k,i,j+1}-dp_{k’,i,j+1}<br>\end{aligned}<br>$<br>可以发现：<br>$$dp_{k,i,j}\le dp_{k’,i,j} \to dp_{k,i,j+1}\le dp_{k’,i,j}$$<br>又 $\because k’ \ge k$，同时对于所有的 $k&lt;s_{i,j}$，有 $dp_{s_{i,j},i,j}&#x3D;dp_{i,j}\le dp_{k,i,j}$。<br>$\therefore dp_{s_{i,j},i,j}\le dp_{k,i,j}$，因此 $s_{i,j+1}\le s_{i,j}$，证毕。<br>根据定理 2，原转移方程变为：<br>$$<br>dp_(i,j) &#x3D; \begin{cases}<br>  \min_{s_{i,j-1}\le k\le s_{i+1,j}}({dp_{i,k},dp_{k+1,j}+w(i,j)}) &amp; i&lt;j\<br>  0 &amp; i&#x3D;j \<br>  \infty &amp; i&gt;j\<br>\end{cases}<br>$$<br>原来转移的时间复杂度为 $\mathcal{O}(n^3)$，而现在的时间复杂度为：<br>$\begin{aligned}<br>\mathcal{O}\left(\sum_{l&#x3D;2}^{n}\sum_{i&#x3D;1}^{n+1-l}(1+s_{i+1,i+l-1}-s_{i,i+l-2})\right)&amp;&#x3D;\mathcal{O}\left(\sum_{l&#x3D;2}^{n}(n+1-l+s_{n+2-l,n}-s_{1,l-1})\right)\<br>&amp;\le \mathcal{O}\left(\sum_{l&#x3D;2}^{n}(2 \times n+2 \times l -1)\right)\<br>&amp;&#x3D;\mathcal{O}\left((n-1)^2\right)\<br>\end{aligned}<br>$<br>即时间复杂度为 $\mathcal{O}(n^2)$。<br>实际上四边形不等式的应用<strong>并不局限于上面的式子</strong>。</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4767">P4767 [IOI 2000] 邮局 加强版</a><br>如果没有做过的话建议先做一下原始版：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P10967">P10967 [IOI 2000] 邮局（原始版）</a><br>代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pii pair<span class="hljs-string">&lt;int, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> piii pair<span class="hljs-string">&lt;pii, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pll pair<span class="hljs-string">&lt;ll, ll&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> plll pair<span class="hljs-string">&lt;pll, ll&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pref static inline</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> fi first</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> se second</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN=<span class="hljs-number">305</span>;<br><span class="hljs-type">int</span> n,p,a[MAXN],dis[MAXN][MAXN],dp[MAXN][MAXN];<br><span class="hljs-keyword">namespace</span> heffo_hard&#123;<br>    <span class="hljs-function">pref <span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>        cin&gt;&gt;n&gt;&gt;p;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)cin&gt;&gt;a[i];<br>        <span class="hljs-built_in">sort</span>(a<span class="hljs-number">+1</span>,a<span class="hljs-number">+1</span>+n);<span class="hljs-comment">//排序（放置到轴上）</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i;j&lt;=n;++j)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=i;k&lt;=j;++k)&#123;<br>                    dis[i][j]+=<span class="hljs-built_in">abs</span>(a[k]-a[(i+j)&gt;&gt;<span class="hljs-number">1</span>]);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(dp));<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)dp[<span class="hljs-number">1</span>][i]=dis[<span class="hljs-number">1</span>][i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=p;++i)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i;j&lt;=n;++j)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=i<span class="hljs-number">-1</span>;k&lt;j;++k)&#123;<br>                    dp[i][j]=<span class="hljs-built_in">min</span>(dp[i][j],dp[i<span class="hljs-number">-1</span>][k]+dis[k<span class="hljs-number">+1</span>][j]);<br>                &#125;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;dp[p][n];<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    heffo_hard::<span class="hljs-built_in">solve</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">heffo_hard</span><br><span class="hljs-comment">定义dis[i][j]:考虑在[i,j]中放置1个邮局的最小距离和（在中间放置）</span><br><span class="hljs-comment">所以dis[i][j]=bs(a[k]-a[(i+j)&gt;&gt;1]);</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>但是现在这份代码过不了，时间复杂度为 $\mathcal{O}(PV^2)$，用什么优化呢？四边形不等式！<br>发现 dis 是满足四边形不等式的，所以我们可以对 $k$ 的取值范围进行优化，优化完的代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pii pair<span class="hljs-string">&lt;int, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> piii pair<span class="hljs-string">&lt;pii, int&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pll pair<span class="hljs-string">&lt;ll, ll&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> plll pair<span class="hljs-string">&lt;pll, ll&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pref static inline</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> fi first</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> se second</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,p,a[<span class="hljs-number">3005</span>],dis[<span class="hljs-number">3005</span>][<span class="hljs-number">3005</span>],dp[<span class="hljs-number">3005</span>][<span class="hljs-number">305</span>],s[<span class="hljs-number">3005</span>][<span class="hljs-number">305</span>];<br><span class="hljs-keyword">namespace</span> heffo_hard&#123;<br>    <span class="hljs-function">pref <span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span>&#123;<br>        cin&gt;&gt;n&gt;&gt;p;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>            cin&gt;&gt;a[i];<br>        &#125;<br>        <span class="hljs-built_in">sort</span>(a<span class="hljs-number">+1</span>,a<span class="hljs-number">+1</span>+n);<span class="hljs-comment">//排序（放置到轴上）</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>            dis[i][i]=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i<span class="hljs-number">+1</span>;j&lt;=n;++j)&#123;<br>                <span class="hljs-type">int</span> mid=(i+j)&gt;&gt;<span class="hljs-number">1</span>;<br>                dis[i][j]=dis[i][j<span class="hljs-number">-1</span>]+a[j]-a[mid];<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(dp));<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;++i)&#123;<br>            dp[i][<span class="hljs-number">1</span>]=dis[<span class="hljs-number">1</span>][i];<br>            s[i][<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">2</span>;j&lt;=p;++j)&#123;<br>            s[n<span class="hljs-number">+1</span>][j]=n;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n;i&gt;=j;--i)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=s[i][j<span class="hljs-number">-1</span>];k&lt;=<span class="hljs-built_in">min</span>(i<span class="hljs-number">-1</span>,s[i<span class="hljs-number">+1</span>][j]);++k)&#123;<br>                    <span class="hljs-type">int</span> tmp=dp[k][j<span class="hljs-number">-1</span>]+dis[k<span class="hljs-number">+1</span>][i];<br>                    <span class="hljs-keyword">if</span>(tmp&lt;dp[i][j])&#123;<br>                        dp[i][j]=tmp;<br>                        s[i][j]=k;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;dp[n][p];<br>    &#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);cout.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    heffo_hard::<span class="hljs-built_in">solve</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">heffo_hard</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>现在的时间复杂度是 $\mathcal{O}(PV)$，可以通过本题。<br>制作不易，可以点个 star 吗？<br>如果有问题欢迎评论。</p>
+
                 
               </div>
             
@@ -397,7 +422,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B5%8B%E8%AF%95/" class="print-no-link">#测试</a>
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="print-no-link">#学习笔记</a>
       
     </div>
   
@@ -409,8 +434,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>text</div>
-      <div>http://example.com/2026/08/08/text/</div>
+      <div>四边形不等式学习笔记</div>
+      <div>http://example.com/2026/08/08/四边形不等式学习笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -428,7 +453,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2026年8月8日</div>
+          <div>2026年8月9日</div>
         </div>
       
       
