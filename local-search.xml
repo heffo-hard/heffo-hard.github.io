@@ -3,23 +3,59 @@
   
   
   
+  
   <entry>
-    <title>text</title>
-    <link href="/2026/08/08/text/"/>
-    <url>/2026/08/08/text/</url>
+    <title>links</title>
+    <link href="/"/>
+    <url>/</url>
     
     <content type="html"><![CDATA[]]></content>
     
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/"/>
+    <url>/</url>
     
-    
-    <tags>
-      
-      <tag>测试</tag>
-      
-    </tags>
+    <content type="html"><![CDATA[/* 设置全屏固定背景 */body {    background-image: url('/img/default.png');    background-attachment: fixed;    background-size: cover;    background-position: center;    background-repeat: no-repeat;}/* 毛玻璃效果 */#board {    background-color: rgba(255, 255, 255, 0.6);    /* 半透明白色底色 */    -webkit-backdrop-filter: blur(10px);    backdrop-filter: blur(10px);}/* 暗色模式适配 */html[data-user-color-scheme="dark"] #board {    background-color: rgba(0, 0, 0, 0.6);}/* 隐藏首页的 Banner 头图 */#banner {    background-image: none !important;}/* 或者让 Banner 完全透明 */#banner {    background-image: none !important;    background-color: transparent !important;}]]></content>
     
   </entry>
   
+  
+  
+  <entry>
+    <title></title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[@font-face {    font-family: 'LXGW WenKai GB Screen';    src: url('/font/LXGWWenKaiGBScreen-Regular.woff2') format('woff2'),        url('/font/LXGWWenKaiGBScreen-Regular.ttf') format('truetype');    font-weight: 400;    font-style: normal;    font-display: swap;}/* 全局正文、标题统一应用字体 */body,h1,h2,h3,h4,h5,h6,p,li,a {    font-family: 'LXGW WenKai GB Screen', system-ui, sans-serif !important;}/* 代码块单独适配 */pre,code {    font-family: 'LXGW WenKai GB Screen', monospace !important;}]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[::-webkit-scrollbar {    width: 10px;    height: 10px;}::-webkit-scrollbar-thumb {    background-color: #5b64ec;    background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);    border-radius: 2em;}::-webkit-scrollbar-corner {    background-color: transparent;}::-moz-selection {    color: #fff;    background-color: #e58a8a;}]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[.typing-changing {    background: linear-gradient(to right, #ff6b6b, #f06595, #e58a8a, #d9a7c7, #bcc6cc);    -webkit-background-clip: text;    background-clip: text;    color: transparent;}```css #subtitle {    background: linear-gradient(-45deg, #ee7752, #ce3e75, #6ed8ff, #23d5ab);    /* 渐变参数 */    background-size: 400% 400%;    -webkit-animation: Gradient 10s ease infinite;    -moz-animation: Gradient 10s ease infinite;    animation: Gradient 10s ease infinite;    -o-user-select: none;    -ms-user-select: none;    -webkit-user-select: none;    -moz-user-select: none;    user-select: none;    -webkit-background-clip: text;    -webkit-text-fill-color: transparent;    border-top-left-radius: 10px;    border-top-right-radius: 10px;}#subtitle:before {    background-color: rgba(0, 0, 0, 0);}]]></content>
+    
+  </entry>
   
   
   
