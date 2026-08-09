@@ -19,3 +19,13 @@ body {
 html[data-user-color-scheme="dark"] #board {
     background-color: rgba(0, 0, 0, 0.6);
 }
+/* 隐藏首页的 Banner 头图 */
+#banner {
+    background-image: none !important;
+}
+
+/* 或者让 Banner 完全透明 */
+#banner {
+    background-image: none !important;
+    background-color: transparent !important;
+}
